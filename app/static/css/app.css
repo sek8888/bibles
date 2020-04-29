@@ -1,0 +1,261 @@
+html {
+    box-sizing: border-box;
+    font-family:Arial, sans-serif;
+    line-height: 1.15;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 900px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 890px;
+    background-color: #a8adc0;
+
+    border-color: #a8adc0;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.topnav {
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.topnav a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #D2E4FC;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #b9c9fe;
+    color: black;
+}
+
+.topnav-right {
+    float: right;
+}
+
+.search {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.search input{
+    width: 100%;
+    text-align: center;
+    padding: 9px 0px;
+    box-sizing: border-box;
+}
+
+.out {
+    overflow: hidden;
+}
+
+.out-right {
+    float: right;
+    width: 88%;
+
+}
+
+.out-right input {
+    width: 100%;
+    text-align: center;
+    padding: 9px 0px;
+    box-sizing: border-box;
+}
+
+.out label {
+    position: relative;
+    top: 11px;
+}
+
+
+.dblclick-text{
+    text-align: center;
+}
+
+.data {
+    margin-top: 147px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 899px;
+}
+
+.msg {
+    background-color: #ffa50080;
+    position: fixed;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    z-index: 1;
+    top: 0;
+}
+
+
+.tg {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-color:#aabcfe;
+    max-width: 900px;
+    width: 100%;
+}
+
+.tg td{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#aabcfe;
+    color:#669;
+    background-color:#e8edff;
+}
+
+.tg th{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#aabcfe;
+    color:#039;
+    background-color:#b9c9fe;
+}
+
+.tg .tg-baqh{
+    text-align:center;
+    vertical-align:top
+}
+
+.tg .tg-head{
+    background-color:#D2E4FC;
+    vertical-align:top
+}
+
+.tg .tg-yw4l{vertical-align:top}
+
+.fnt-bold {
+    font-weight: bold;
+}
+
+.add{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 9px 20px;
+    margin-left: 45%;
+    margin-right: 45%;
+    width: 10%;
+}
+
+.modal-input {
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    padding: 9px 0px;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+
+/* ---------------------------------------------------------------------  */
+#msgs {
+    position: absolute;
+    right: 10px;
+}
+
+#msgs div{
+    margin: 5px;
+    padding: 10px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form textarea {
+    width: 280px;
+    height: 280px;
+}
