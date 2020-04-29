@@ -1,6 +1,6 @@
 db = {
     'db_file': 'var/DB/777.db',
-    'pragma_key': 'vxSQLite3passwd'
+    'pragma_key': 'passwd'
 }
 
 sys = {
