@@ -88,6 +88,17 @@ let closeModal = () => {
     mdl && mdl.remove()
 }
 
+let toggleColor = () => {
+    if (document.body.style.backgroundColor == "black") {
+        document.body.style.color = "black"
+        document.body.style.backgroundColor = "white";
+    }
+    else {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white"
+    }
+}
+
 let $id = (itemId) => document.querySelector(`#${itemId}`)
 let $create = (type) => document.createElement(type)
 let $createTxt = (text) => document.createTextNode(text)

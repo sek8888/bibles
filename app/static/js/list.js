@@ -3,7 +3,11 @@ let createBiblesList = (parentId, data) => {
     const ol = $create("ol")
     const title = $create("strong")
     title.innerHTML = 'Bibles'
+    const colorToggle = $create("strong")
+    colorToggle.innerHTML = '    🔆'
+    colorToggle.setAttribute('onclick', 'toggleColor()')
     $id('title').innerHTML = title.outerHTML
+    $id('title').appendChild(colorToggle)
 
     for (i in data) {
         const li = $create("li")
@@ -33,7 +37,11 @@ let createPartsList = (parentId, data) => {
     const ul = $create("ul")
     const title = $create("strong")
     title.innerHTML = 'Parts'
+    const colorToggle = $create("strong")
+    colorToggle.innerHTML = '    🔆'
+    colorToggle.setAttribute('onclick', 'toggleColor()')
     $id('title').innerHTML = title.outerHTML
+    $id('title').appendChild(colorToggle)
 
     for (i in data) {
         const li = $create("li")
@@ -63,7 +71,11 @@ let createBooksList = (parentId, data) => {
     const ul = $create("ul")
     const title = $create("strong")
     title.innerHTML = 'Books'
+    const colorToggle = $create("strong")
+    colorToggle.innerHTML = '    🔆'
+    colorToggle.setAttribute('onclick', 'toggleColor()')
     $id('title').innerHTML = title.outerHTML
+    $id('title').appendChild(colorToggle)
 
     for (i in data) {
         const li = $create("li")
@@ -93,7 +105,11 @@ let createChaptersList = (parentId, data) => {
     const ul = $create("ul")
     const title = $create("strong")
     title.innerHTML = 'Chapters'
+    const colorToggle = $create("strong")
+    colorToggle.innerHTML = '    🔆'
+    colorToggle.setAttribute('onclick', 'toggleColor()')
     $id('title').innerHTML = title.outerHTML
+    $id('title').appendChild(colorToggle)
 
     for (i in data) {
         const li = $create("li")
@@ -123,7 +139,11 @@ let createVersesList = (parentId, data) => {
     const cont = $create("div")
     const title = $create("strong")
     title.innerHTML = 'Verses'
+    const colorToggle = $create("strong")
+    colorToggle.innerHTML = '    🔆'
+    colorToggle.setAttribute('onclick', 'toggleColor()')
     $id('title').innerHTML = title.outerHTML
+    $id('title').appendChild(colorToggle)
 
     for (i in data) {
         const number = $create("strong")
@@ -137,3 +157,4 @@ let createVersesList = (parentId, data) => {
     }
     return cont
 }
+
