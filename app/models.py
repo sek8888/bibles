@@ -87,6 +87,7 @@ class Chapters(ModelView):
             'book_id': None,
             'number': None,
             'text': None,
+            'description': None,
         }
         self.parent = 'books'
         self.child = 'verses'
@@ -95,6 +96,7 @@ class Chapters(ModelView):
             'book_id': {'edit': False, 'create': False},
             'number': {'edit': True, 'create': True, 'type': 'number'},
             'text': {'edit': True, 'create': True, 'type': 'textarea'},
+            'description': {'edit': True, 'create': True, 'type': 'textarea'},
         }
         super().__init__()
 
@@ -112,6 +114,7 @@ class Verses(ModelView):
             'chapter_id': None,
             'number': None,
             'text': None,
+            'description': None,
         }
         self.parent = 'chapters'
         self.child = None
@@ -120,5 +123,6 @@ class Verses(ModelView):
             'chapter_id': {'edit': False, 'create': False},
             'number': {'edit': True, 'create': True, 'type': 'number'},
             'text': {'edit': True, 'create': True, 'type': 'textarea'},
+            'description': {'edit': True, 'create': True, 'type': 'textarea'},
         }
         super().__init__()

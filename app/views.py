@@ -15,9 +15,15 @@ sleep_time = 0
 
 
 @app.route("/", methods=['GET'])
-def _index():
+def index():
     sleep(sleep_time)
-    return render_template("page.html")
+    return render_template("index.html")
+
+
+@app.route("/administrator777", methods=['GET'])
+def admin():
+    sleep(sleep_time)
+    return render_template("admin.html")
 
 
 @app.route("/data/<int:parent_id>/<table_name>/list", methods=['GET'])
@@ -66,7 +72,7 @@ def delete_record(table_name, id):
 
 @app.before_request
 def before_request():
-    log_line = '"{}" "{}" "{}" "{}" "{}{}{}"{}'.format(
+    log_line = '"{}" "{}" "{}" "{}" "{}{}{}"\n'.format(
         datetime.now(),
         request.environ['HTTP_USER_AGENT'],
         request.environ['SERVER_PROTOCOL'],
@@ -74,8 +80,7 @@ def before_request():
         request.environ['REMOTE_ADDR'],
         request.environ['PATH_INFO'],
         "?{}".format(request.environ['QUERY_STRING'])
-        if request.environ['QUERY_STRING'] else '',
-        '\n'
+        if request.environ['QUERY_STRING'] else ''
     )
-    with open("var/log/reguest.log", "a") as fd:
+    with open("var/log/reguest.log", "a+") as fd:
         fd.write(log_line)

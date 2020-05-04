@@ -3,6 +3,7 @@ class selectors {
         this.contId = contId
         this.inst_name = instance_name
         this.types = ['bibles', 'parts', 'books', 'chapters', 'verses']
+        this.titles = ['Bibles', 'Parts', 'Books', 'Chapters']
         this.states = this.getMemoryStates()
         this.callbacks = {
             'bibles': null,
@@ -26,7 +27,7 @@ class selectors {
 
     getStateType(index) { return this.types[index]}
 
-    getState(type) {return this.states[this.getStateIndex(type)]}
+    getState(type) { return this.states[this.getStateIndex(type)] }
 
     getParentState(type)
         { return this.states[this.getStateIndex(type) - 1] || '0' }
@@ -66,49 +67,21 @@ class selectors {
 
     create() {
         const cont = $id(this.contId)
-        cont.appendChild(new selector('bibles_selector').create(
-            'bibles',
-            'Bibles',
-            {onchange: `${this.inst_name}.onSelect(this)`}
-        ))
-
-        cont.appendChild(new selector('parts_selector').create(
-            'parts',
-            'Parts',
-            {onchange: `${this.inst_name}.onSelect(this)`}
-        ))
-
-        cont.appendChild(new selector('books_selector').create(
-            'books',
-            'Books',
-            {onchange: `${this.inst_name}.onSelect(this)`}
-        ))
-
-        cont.appendChild(new selector('chapters_selector').create(
-            'chapters',
-            'Chapters',
-            {onchange: `${this.inst_name}.onSelect(this)`}
-        ))
+        for (let i in this.titles)
+            cont.appendChild(new selector(`${this.types[i]}_selector`, true)
+                .create(
+                    this.types[i],
+                    this.titles[i],
+                    {onchange: `${this.inst_name}.onSelect(this)`}
+                )
+            )
     }
 
     reload(type = null) {
         type = type || 'bibles'
         setLoader()
         this.loadData(type)
-        //this.loadCascade(type)
     }
-
-    /*
-    loadCascade(type = null) {
-        console.log('-- loadCascade', type)
-        const nextType = this.getNextType(type)
-        const loadType = nextType || type || 'bibles'
-        console.log('-- loadCascade', loadType)
-
-        setLoader()
-        this.loadData(loadType)
-    }
-    */
 
     onSelect(selector) {
         const type = selector.name
@@ -123,8 +96,10 @@ class selectors {
             //console.log('------update -> 0 ----', this.types[i])
             // clean selectors
             sel = $id(`${this.types[i]}_selector`)
-            if (sel)
-                 { sel.innerHTML = '' }
+            if (sel) {
+                sel.innerHTML = ''
+                sel.disabled = true
+            }
         }
 
         this.setMemory('states', this.states)
@@ -148,10 +123,11 @@ class selectors {
         console.log('nextType', nextType)
 
         getData(`/data/${parentValue}/${type}/list`).then(data => {
-            nextType && new selector(`${type}_selector`).update(
-                data.map(d => ({[d.id]: d.text})),
-                value
-            )
+            if (nextType)
+                new selector(`${type}_selector`).update(
+                    data.map(d => ({[d.id]: d.text})),
+                    value
+                ).disabled = false
 
             // call last type's callback
             lastCallType == type && callback && callback(parentValue, data)
@@ -164,8 +140,9 @@ class selectors {
 
 
 class selector {
-    constructor(id) {
+    constructor(id, disabled = false) {
         this.id = id
+        this.disabled = id
     }
 
     create(name, label, events = {}) {
@@ -179,6 +156,9 @@ class selector {
 
         for (let e in events)
             select.setAttribute(e, events[e])
+
+        if (this.disabled)
+            select.disabled = true
 
         cont.appendChild(lbl)
         cont.appendChild(select)
